@@ -4,8 +4,10 @@ class StatusBadge extends StatelessWidget {
   final String status;
   const StatusBadge({super.key, required this.status});
 
+  String get _normalized => status.trim().toUpperCase();
+
   Color get _bgColor {
-    switch (status.toUpperCase()) {
+    switch (_normalized) {
       case 'APPROVED':
         return const Color(0xFFE3F2FD);
       case 'PENDING':
@@ -16,14 +18,17 @@ class StatusBadge extends StatelessWidget {
         return const Color(0xFFE6F4EA);
       case 'COMPLETED':
         return const Color(0xFFE6F4EA);
-
+      case 'PARTIAL_RETURNED':
+        return const Color(0xFFE8F5E9);
+      case 'CANCELLED':
+        return const Color(0xFFF3E5F5);
       default:
         return Colors.grey.shade100;
     }
   }
 
   Color get _textColor {
-    switch (status.toUpperCase()) {
+    switch (_normalized) {
       case 'APPROVED':
         return const Color(0xFF1565C0);
       case 'PENDING':
@@ -34,17 +39,27 @@ class StatusBadge extends StatelessWidget {
         return const Color(0xFF2E7D32);
       case 'COMPLETED':
         return const Color(0xFF2E7D32);
-
+      case 'PARTIAL_RETURNED':
+        return const Color(0xFF1B5E20);
+      case 'CANCELLED':
+        return const Color(0xFF6A1B9A);
       default:
         return Colors.grey.shade700;
     }
   }
 
+  String get _displayStatus {
+    if (_normalized.isEmpty) return status;
+
+    return _normalized
+        .toLowerCase()
+        .split('_')
+        .map((e) => e[0].toUpperCase() + e.substring(1))
+        .join(' ');
+  }
+
   @override
   Widget build(BuildContext context) {
-    final display = status.isNotEmpty
-        ? status[0].toUpperCase() + status.substring(1).toLowerCase()
-        : status;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
       decoration: BoxDecoration(
@@ -52,7 +67,7 @@ class StatusBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        display,
+        _displayStatus,
         style: TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.w600,

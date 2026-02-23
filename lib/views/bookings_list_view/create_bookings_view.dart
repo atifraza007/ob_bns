@@ -6,8 +6,8 @@ import 'package:bin_management_system/core/utils/app_button/app_button.dart';
 import 'package:bin_management_system/core/utils/app_field/app_field.dart';
 import 'package:bin_management_system/core/utils/app_text/app_text.dart';
 import 'package:bin_management_system/core/utils/lottie_loader/lottie_loader.dart';
-import 'package:bin_management_system/views/home_view/controller/components/common_components.dart';
-import 'package:bin_management_system/views/home_view/controller/home_controller.dart';
+import 'package:bin_management_system/views/bookings_list_view/components/common_components.dart';
+import 'package:bin_management_system/views/bookings_list_view/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -67,7 +67,7 @@ class CreateBookingView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SectionLabel(label: 'Expected Date'),
+                          SectionLabel(label: 'Return Date'),
                           Obx(
                             () => DateTile(
                               label: ctrl.expectedDate.value != null

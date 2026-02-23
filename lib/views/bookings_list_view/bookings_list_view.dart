@@ -3,17 +3,17 @@ import 'package:bin_management_system/core/utils/app_text/app_text.dart';
 import 'package:bin_management_system/core/utils/lottie_loader/lottie_loader.dart';
 import 'package:bin_management_system/views/auth_views/login_view/login_view.dart';
 import 'package:bin_management_system/views/booking_details_view/booking_detail_view.dart';
-import 'package:bin_management_system/views/home_view/components/logout_dialog.dart';
-import 'package:bin_management_system/views/home_view/controller/components/booking_tile.dart';
-import 'package:bin_management_system/views/home_view/controller/home_controller.dart';
-import 'package:bin_management_system/views/home_view/create_bookings_view.dart';
+import 'package:bin_management_system/views/bookings_list_view/components/logout_dialog.dart';
+import 'package:bin_management_system/views/bookings_list_view/components/booking_tile.dart';
+import 'package:bin_management_system/views/bookings_list_view/controller/home_controller.dart';
+import 'package:bin_management_system/views/bookings_list_view/create_bookings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bin_management_system/config/app_colors/app_colors.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class BookingsListView extends StatelessWidget {
+  const BookingsListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -136,8 +136,10 @@ class HomeView extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: FloatingActionButton.extended(
-          onPressed: () {
+          onPressed: () async {
+            var siteId = await dataController.getSiteIdFromStorage();
             controller.resetForm();
+            dataController.fetchAvailableBins(siteId: siteId ?? '1');
             Get.to(() => CreateBookingView());
           },
           backgroundColor: Colors.transparent,

@@ -7,7 +7,6 @@ import 'package:bin_management_system/core/utils/lottie_loader/lottie_loader.dar
 import 'package:bin_management_system/models/booking_model.dart';
 import 'package:bin_management_system/views/booking_details_view/components/bin_selection.dart';
 import 'package:bin_management_system/views/booking_details_view/components/section_card.dart';
-import 'package:bin_management_system/views/booking_details_view/components/work_row.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -291,7 +290,7 @@ class _BookingDetailViewState extends State<BookingDetailView> {
             final booking = dataController.bookingDetailModel.value;
             final subcontractor = booking.subcontractor;
             final items = booking.items ?? [];
-            final workers = subcontractor?.workers ?? [];
+            // final workers = subcontractor?.workers ?? [];
 
             return ListView(
               padding: const EdgeInsets.all(16),
@@ -344,27 +343,27 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                         label: 'Company',
                         value: subcontractor.companyName ?? '—',
                       ),
-                      if (workers.isNotEmpty) ...[
-                        const SectionDivider(),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: AppText(
-                            title: 'Workers (${workers.length})',
-                            size: 12,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                        ...workers.asMap().entries.map((e) {
-                          final w = e.value;
-                          return WorkerRow(
-                            name: w.name ?? '—',
-                            email: w.email ?? '—',
-                            isActive: w.isActive ?? false,
-                            isLast: e.key == workers.length - 1,
-                          );
-                        }),
-                      ],
+                      // if (workers.isNotEmpty) ...[
+                      //   const SectionDivider(),
+                      //   Padding(
+                      //     padding: const EdgeInsets.only(bottom: 8),
+                      //     child: AppText(
+                      //       title: 'Workers (${workers.length})',
+                      //       size: 12,
+                      //       fontWeight: FontWeight.w600,
+                      //       color: Colors.grey.shade600,
+                      //     ),
+                      //   ),
+                      //   ...workers.asMap().entries.map((e) {
+                      //     final w = e.value;
+                      //     return WorkerRow(
+                      //       name: w.name ?? '—',
+                      //       email: w.email ?? '—',
+                      //       isActive: w.isActive ?? false,
+                      //       isLast: e.key == workers.length - 1,
+                      //     );
+                      //   }),
+                      // ],
                     ],
                   ),
 

@@ -7,8 +7,8 @@ import 'package:bin_management_system/core/utils/lottie_loader/lottie_loader.dar
 import 'package:bin_management_system/views/assigned_sites_view/components/assigned_sites_tile.dart';
 import 'package:bin_management_system/views/assigned_sites_view/controller/assigned_sites_controller.dart';
 import 'package:bin_management_system/views/auth_views/login_view/login_view.dart';
-import 'package:bin_management_system/views/home_view/components/logout_dialog.dart';
-import 'package:bin_management_system/views/home_view/home_view.dart';
+import 'package:bin_management_system/views/bookings_list_view/components/logout_dialog.dart';
+import 'package:bin_management_system/views/bookings_list_view/bookings_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -160,10 +160,10 @@ class _AssignedSitesViewState extends State<AssignedSitesView>
                                 dataController.fetchAllBookings(
                                   siteId: sites[index].id.toString(),
                                 );
-                                dataController.fetchAvailableBins(
-                                  siteId: sites[index].id.toString(),
-                                );
-                                Get.to(() => HomeView());
+                                // dataController.fetchAvailableBins(
+                                //   siteId: sites[index].id.toString(),
+                                // );
+                                Get.to(() => BookingsListView());
                               },
                             );
                           },

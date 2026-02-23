@@ -3,7 +3,7 @@
 import 'package:bin_management_system/config/app_colors/app_colors.dart';
 import 'package:bin_management_system/core/controllers/data_controller/data_controller.dart';
 import 'package:bin_management_system/core/utils/app_text/app_text.dart';
-import 'package:bin_management_system/views/home_view/controller/home_controller.dart';
+import 'package:bin_management_system/views/bookings_list_view/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
